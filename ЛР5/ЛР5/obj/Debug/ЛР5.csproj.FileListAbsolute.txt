@@ -1,0 +1,15 @@
+C:\Users\user\source\repos\БД\ЛР5\ЛР5\obj\Debug\ЛР5.csproj.AssemblyReference.cache
+C:\Users\user\source\repos\БД\ЛР5\ЛР5\obj\Debug\ЛР5.csproj.SuggestedBindingRedirects.cache
+C:\Users\user\source\repos\БД\ЛР5\ЛР5\obj\Debug\App.g.cs
+C:\Users\user\source\repos\БД\ЛР5\ЛР5\obj\Debug\ЛР5_MarkupCompile.cache
+C:\Users\user\source\repos\БД\ЛР5\ЛР5\bin\Debug\ЛР5.exe.config
+C:\Users\user\source\repos\БД\ЛР5\ЛР5\bin\Debug\ЛР5.exe
+C:\Users\user\source\repos\БД\ЛР5\ЛР5\bin\Debug\ЛР5.pdb
+C:\Users\user\source\repos\БД\ЛР5\ЛР5\obj\Debug\MainWindow.baml
+C:\Users\user\source\repos\БД\ЛР5\ЛР5\obj\Debug\MainWindow.g.cs
+C:\Users\user\source\repos\БД\ЛР5\ЛР5\obj\Debug\ЛР5.g.resources
+C:\Users\user\source\repos\БД\ЛР5\ЛР5\obj\Debug\ЛР5.Properties.Resources.resources
+C:\Users\user\source\repos\БД\ЛР5\ЛР5\obj\Debug\ЛР5.csproj.GenerateResource.cache
+C:\Users\user\source\repos\БД\ЛР5\ЛР5\obj\Debug\ЛР5.csproj.CoreCompileInputs.cache
+C:\Users\user\source\repos\БД\ЛР5\ЛР5\obj\Debug\ЛР5.exe
+C:\Users\user\source\repos\БД\ЛР5\ЛР5\obj\Debug\ЛР5.pdb
