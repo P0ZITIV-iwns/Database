@@ -1,4 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,11 +25,11 @@ namespace ЛР6
     /// </summary>
     public partial class MainWindow : Window
     {
-        List<Phone> phones;
         private Phone tempPhone;
         public MainWindow()
         {
             InitializeComponent();
+            EndEditing();
             mainListBox.ItemsSource = DatabaseControl.GetPhonesForView();
             companyView.ItemsSource = DatabaseControl.GetCompanies();
 
@@ -135,8 +135,9 @@ namespace ЛР6
                         tempPhone.Price = Convert.ToDecimal(priceView.Text);
 
 
+                        DatabaseControl.UpdatePhone(mainListBox.SelectedItem as Phone);
                         mainListBox.ItemsSource = null;
-                        mainListBox.ItemsSource = phones;
+                        mainListBox.ItemsSource = DatabaseControl.GetPhonesForView();
 
                         EndEditing();
                     }
@@ -154,84 +155,6 @@ namespace ЛР6
             {
                 MessageBox.Show("Поле для ввода не может быть пустым!", "Ошибка");
             }
-        }
-        public class Phone
-        {
-            public int Id { get; set; }
-            public string Title { get; set; }
-            public int CompanyId { get; set; }
-            public decimal Price { get; set; }
-            public Company CompanyEntity { get; set; }
-        }
-        public class Company
-        {
-            public int Id { get; set; }
-            public string Title { get; set; }
-            public string CEO { get; set; }
-            public double Capital { get; set; }
-            public List<Phone> PhoneEntities { get; set; }
-        }
-        public class DbAppContext : DbContext
-        {
-            public DbSet<Phone> Phones { get; set; }
-            public DbSet<Company> Company { get; set; }
-
-            protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-            {
-                optionsBuilder.UseNpgsql(
-                    "Host=localhost;Username=postgres;Password=root;Database=PhonesDatabase");
-            }
-            protected override void OnModelCreating(ModelBuilder modelBuilder)
-            {
-                modelBuilder.Entity<Phone>().HasOne(p => p.CompanyEntity)
-                                            .WithMany(p => p.PhoneEntities);
-            }
-        }
-        public static class DatabaseControl
-        {
-            public static List<Company> GetCompanies()
-            {
-                using (DbAppContext ctx = new DbAppContext())
-                {
-                    return ctx.Company.Include(p => p.PhoneEntities).ToList();
-                }
-            }
-            public static List<Phone> GetPhonesForView()
-            {
-                using (DbAppContext ctx = new DbAppContext())
-                {
-                    return ctx.Phones.Include(p => p.CompanyEntity).ToList();
-                }
-            }
-            public static void AddPhone(Phone phone)
-            {
-                using (DbAppContext ctx = new DbAppContext())
-                {
-                    ctx.Phones.Add(phone);
-                    ctx.SaveChanges();
-                }
-            }
-            public static void UpdatePhone(Phone phone)
-            {
-                using (DbAppContext ctx = new DbAppContext())
-                {
-                    Phone _phone = ctx.Phones.FirstOrDefault(p => p.Id == phone.Id);
-
-                    _phone.Title = phone.Title;
-                    _phone.Price = phone.Price;
-                    _phone.CompanyId = phone.CompanyId;
-
-                    ctx.SaveChanges();
-                }
-            }
-            public static void RemovePhone(Phone phone)
-            {
-                using (DbAppContext ctx = new DbAppContext())
-                {
-                    ctx.Phones.Remove(phone);
-                    ctx.SaveChanges();
-                }
-            }
-        }
+        }        
     }
 }
