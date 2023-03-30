@@ -1,0 +1,53 @@
+﻿<Page x:Class="ЛР9.AboutPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:ЛР9"
+      mc:Ignorable="d" 
+      Title="Телефончики"
+      d:DesignHeight="550" d:DesignWidth="1000">
+    <Page.Resources>
+        <ControlTemplate x:Key="RoundButton">
+            <Border CornerRadius="35" BorderBrush="Black"
+                    BorderThickness="2" MinHeight="70" MaxHeight="70" MinWidth="70" MaxWidth="70"
+                    VerticalAlignment="Top">
+                <Image Source="/Images/backArrow.png"/>
+            </Border>
+        </ControlTemplate>
+    </Page.Resources>
+    <Grid Background="White">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="0.4*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.2*"></ColumnDefinition>
+            <ColumnDefinition Width="0.25*"></ColumnDefinition>
+            <ColumnDefinition Width="0.35*"></ColumnDefinition>
+            <ColumnDefinition Width="0.2*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <StackPanel Margin="10">
+            <Button Template="{StaticResource RoundButton}" Click="BackArrowButton_Click"/>
+        </StackPanel>
+        <StackPanel Margin="10" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center">
+            <Image Name="imagePageView"/>
+        </StackPanel>
+        <StackPanel Margin="10" Grid.Column="2">
+            <TextBlock FontSize="26" LineHeight="32">Название телефона:</TextBlock>
+            <TextBlock Name="titlePageView" FontSize="16" LineHeight="24"/>
+            <TextBlock FontSize="26" LineHeight="32">Производитель:</TextBlock>
+            <TextBlock Name="companyPageView" FontSize="16" LineHeight="24"/>
+            <TextBlock FontSize="26" LineHeight="32">Цена:</TextBlock>
+            <TextBlock Name="pricePageView" FontSize="16" LineHeight="24"/>
+        </StackPanel>
+
+        <DockPanel LastChildFill="True" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2">
+            <TextBlock FontSize="26" LineHeight="32" DockPanel.Dock="Top">Описание:</TextBlock>
+            <ScrollViewer DockPanel.Dock="Top" VerticalScrollBarVisibility="Auto">
+                <TextBlock TextWrapping="Wrap" Name="definitionPageView" FontSize="16" LineHeight="24"
+                           ScrollViewer.CanContentScroll="True" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Auto"/>
+            </ScrollViewer>
+        </DockPanel>
+    </Grid>
+</Page>
